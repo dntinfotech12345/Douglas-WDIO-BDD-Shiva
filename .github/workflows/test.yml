@@ -28,11 +28,7 @@ jobs:
       - name: Install dependencies
         run: npm ci  # Use npm ci to ensure a clean and reliable install from package-lock.json
  
-      # 4. Install WebDriverIO services (e.g., chromedriver or selenium)
-      - name: Install WebDriverIO services
-        run: |
-          npx wdio config  # This initializes the WebDriverIO configuration if not set up already
- 
+      
       # 5. Run WebDriverIO tests using TypeScript
       - name: Run WebDriverIO Tests
         run: npx wdio run wdio.conf.ts  # This will run the WebDriverIO tests with TypeScript config
