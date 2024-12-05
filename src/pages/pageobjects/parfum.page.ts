@@ -4,14 +4,7 @@ import logger from "../../helper/logger/logger";
 import { assert } from "../../helper/util/assert.util";
 
 class ParfumPageObject {
-
-  public async getParfumPageTitle(): Promise<string> {
-    await webActions.waitForPageToLoad();
-    const title = await browser.getTitle();
-    logger.info(`Parfum page title is: ${title}`);
-    return title;
-  }
-
+  
   public async selectParfumPageDropdown(filterOption: string): Promise<void> {
     const searchBarSelector = $(ParfumPageConstants.searchBar);
     await webActions.mouseHoverOnElement(searchBarSelector,"Search bar selector");
