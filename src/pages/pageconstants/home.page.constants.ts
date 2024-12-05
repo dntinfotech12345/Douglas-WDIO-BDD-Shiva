@@ -1,8 +1,8 @@
 export class HomePageConstants {
 
-  public static AcceptAllButton = '[data-testid="uc-accept-all-button"]';
+  public static acceptAllButton = '[data-testid="uc-accept-all-button"]';
 
-  public static HeadingTab = (tabName: string): string =>
+  public static headingTab = (tabName: string): string =>
     `//a[@type='nav-heading' and text()='${tabName}']`;
 
 }

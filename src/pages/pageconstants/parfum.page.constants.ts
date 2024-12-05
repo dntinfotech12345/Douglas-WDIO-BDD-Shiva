@@ -1,6 +1,6 @@
 export class ParfumPageConstants {
 
-  public static appliedFilters = "button.selected-facets__value";
+  public static appliedFilters = "//button[@class='selected-facets__value']";
 
   public static pageInfoLocator = "div[data-testid='pagination-title-dropdown']";
 
@@ -17,5 +17,7 @@ export class ParfumPageConstants {
   public static filterTag = (filterTag: string): string =>
     `//div[contains(@data-testid,'product-eyecatcher') and text()='${filterTag}']`;
 
+  public static paginationText=(nextPageNumber:string,totalPageNumber:string): string=>
+    `//div[text()='Seite ${nextPageNumber} von ${totalPageNumber}']`;
 
 }

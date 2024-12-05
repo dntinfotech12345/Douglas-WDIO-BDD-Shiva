@@ -2,7 +2,6 @@ import { Given, Then, When } from "@wdio/cucumber-framework";
 import { webActions } from "../../helper/util/web.actions.util";
 import { config } from "../../../config/wdio.test.conf";
 import { homepage } from "../../pages/pageobjects/home.page";
-import { assert } from "../../helper/util/assert.util";
 import * as data from "../../data/test-data/douglasPage.json"
 import { parfumPage } from "../../pages/pageobjects/parfum.page";
 
@@ -12,11 +11,11 @@ Given(/^User navigates to the application$/, async () => {
 
 When(/^User click on parfum tab$/, async () => {
   await homepage.acceptCookies();
-  await homepage.clickHomePageTab(data.headingTabs.parfum);
+  await homepage.clickOnHeadingTab(data.headingTabs.parfum);
 });
 
 Then(/^Verify user on the parfum page$/, async () => {
-  assert.assertURL(data.parfumPage.parfumPageUrl,await homepage.getHomePageURL());
+  await parfumPage.validateParfumPageURL(data.parfumPage.parfumPageUrl);
 });
 
 When(/^I select the "(.*)" dropdown$/, async (dropdown:string) => {
@@ -28,7 +27,6 @@ await parfumPage.selectDropdownOption(filterOption)
 });
 
 Then(/^Verify the "(.*)" filter is applied$/, async (filterOption:string) => {
-await parfumPage.getTheFilterTextAndVerify(filterOption);
-await parfumPage.verifyTheFilterTagAcrossPages(filterOption);
-
+await parfumPage.validateFilteredOptionTextMatches(filterOption);
+await parfumPage.validateFilteredOptionProductsDisplayedAcrossPages(filterOption);
 });
